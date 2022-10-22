@@ -31,9 +31,16 @@ namespace LibraryService.Services.Impl
 
         public IList<Book> GetByAuthor(string authorName)
         {
-            return _dbContext.Books.Where(book =>
+            try
+            {
+                return _dbContext.Books.Where(book =>
                 book.Authors.Where(author =>
                     author.Name.ToLower().Contains(authorName.ToLower())).Count() > 0).ToList();
+            }
+            catch (Exception e)
+            {
+                return new List<Book>();
+            }
         }
 
         public IList<Book> GetByCategory(string category)

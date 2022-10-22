@@ -17,9 +17,10 @@ namespace LibraryService.Services.Impl
         }
         private void Initialize()
         {
-            _libraryDatabase =
-                (List<Book>)JsonConvert.DeserializeObject(
+            IList<Book> o = (List<Book>)JsonConvert.DeserializeObject(
                     System.Text.Encoding.UTF8.GetString(Properties.Resources.books), typeof(List<Book>));
+            _libraryDatabase = o;
+                
         }
     }
 }
