@@ -1,4 +1,4 @@
-﻿@model LibraryService.WebClient.Models.BookCategoryViewModel
+﻿@model LibraryService.Web.Models.BookCategoryViewModel
 
 <form asp-controller="Library" asp-action="Index">
     <p>
@@ -26,18 +26,18 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody>        
         @foreach (var item in Model.Books)
         {
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => model.Books[0].Title)
+                    @Html.DisplayNameFor(model => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.Books[0].Authors)
+                    @Html.DisplayNameFor(model => item.Authors)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.Books[0].Category)
+                    @Html.DisplayNameFor(model => item.Category)
                 </td>
             </tr>
         }
