@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -17,10 +18,13 @@ namespace LibraryService.Services.Impl
         }
         private void Initialize()
         {
-            IList<Book> o = (List<Book>)JsonConvert.DeserializeObject(
+            string allJson = File.ReadAllText("d:\\books.json");
+            /*IList<Book> o = (List<Book>)JsonConvert.DeserializeObject(
                     System.Text.Encoding.UTF8.GetString(Properties.Resources.books), typeof(List<Book>));
-            _libraryDatabase = o;
-                
+            _libraryDatabase = o;*/
+            _libraryDatabase =
+                (List<Book>)JsonConvert.DeserializeObject(allJson, typeof(List<Book>));
+
         }
     }
 }
